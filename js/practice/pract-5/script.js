@@ -1,5 +1,4 @@
 const lines = 5;
-var space = '     ';
 var result = '';
 
 for(let i = 0; i < lines; i++){
