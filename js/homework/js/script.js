@@ -30,7 +30,7 @@ function rememberMyFilms() {
             personalMovieDB[nameOfFilm] = markOfFilm;
             console.log('Done!');
         } else {
-            console.log("Error!");
+            console.log("Error! 1");
             i--;
         }
     }
@@ -41,12 +41,12 @@ rememberMyFilms();
 function detectPersonalLevel(){
     if(personalMovieDB.count < 10){
         console.log('Watched very few films.');
-    } else if(personalMovieDB.actors >= 10 && personalMovieDB < 30){
+    } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30){
         console.log('You are a classic viewer,');
     } else if(personalMovieDB.count >= 30){
         console.log('You are a cinephile!');
     } else {
-        console.log('Error!');
+        console.log('Error! 2');
     }
 }
 
