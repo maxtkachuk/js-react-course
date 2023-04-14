@@ -1,43 +1,38 @@
-'use strict';
-
-const btn = document.querySelector('.btn');
-let timerId,
-    i = 0;
-
-function myAnimation () {
-    const elem = document.querySelector('.box');
-    let pos = 0;
-
-    const id = setInterval(frame, 10);
-
-    function frame () {
-        if (pos == 300) {
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + "px";
-            elem.style.left = pos + "px";
-        }
-    } 
-} 
-
-btn.addEventListener('click', myAnimation);
-
-// btn.addEventListener('click', () => {
-//     // const timerId = setTimeout(logger, 2000);
-//     timerId = setInterval(logger, 500);
-// });
-
-// function logger () {
-//     if (i === 3) {
-//         clearInterval(timerId);
-//     } 
-//     console.log('text');
-//     i++;
+// function func() {
+//     window.smth = "string";
 // }
 
-// let id = setTimeout(function log() {
-//     console.log('Hello!');
-//     id = setTimeout(log, 500);
-// }, 500);
+// const someRes = getData();
+// const node = document.querySelector('.class');
 
+// setInterval(function() {
+//     if(node){
+//         node.innerHTML = someRes;
+//     }
+// }, 1000);
+
+// function outer() {
+//     const potentiallyHugeArray = [];
+
+//     return function inner() {
+//         potentiallyHugeArray.push('Hello!');
+//         console.log('Hello!');
+//     };
+// }
+
+// const sayHello = outer();
+
+function createElement() {
+    const div = document.createElement('div');
+    div.id = 'test';
+
+    document.body.append(div);
+}
+
+createElement();
+
+function deleteElement() {
+    document.body.removeChild(document.getElementById('test'));
+}
+
+deleteElement();
