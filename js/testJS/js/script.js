@@ -1,53 +1,27 @@
 'use strict';
 
-// let user = {
-//     name: 'Maksym'
-// };
+const now = new Date('2023-04-14');
+// new Date.parse('2023-04-14');
 
-// let map = new WeakMap();
-// map.set(user, 'data');
+console.log(now.setHours(40));
+console.log(now);
 
-// user = null;
+// console.log(now.getFullYear());
+// console.log(now.getMonth());
+// console.log(now.getDate());
+// console.log(now.getDay());
+// console.log(now.getHours());
+// console.log(now.getUTCHours());
 
-// console.log(map);
+console.log(now.getTimezoneOffset());
+console.log(now.getTime());
 
-let cache = new WeakMap();
+let start = new Date();
 
-function cacheUser(user) {
-    if(!cache.has(user)) {
-        cache.set(user, Date.now());
-    }
-
-    return cache.get(user);
+for (let i = 0; i < 100000; i++){
+    let some = i ** 3;
 }
 
-let lina = {name: 'Evelina'};
-let alex = {name: 'Alex'};
+let end = new Date();
 
-cacheUser(lina);
-cacheUser(alex);
-
-lina = null;
-
-console.log(cache.has(lina));
-console.log(cache.has(alex));
-
-// WeakSet
-// add, has, delete
-
-let messages = [
-    {text: 'Hello!', from: 'John'},
-    {text: 'World!', from: 'Alex'},
-    {text: '......', from: 'Maksym'},
-];
-
-let readMessages = new WeakSet();
-
-readMessages.add(messages[0]);
-readMessages.add(messages[1]);
-
-readMessages.add(messages[0]);
-
-messages.shift();
-
-console.log(readMessages.has(messages[0]));
+console.log(`Time passed: ${end - start} ms`);
