@@ -1,38 +1,53 @@
-// function func() {
-//     window.smth = "string";
-// }
+'use strict';
 
-// const someRes = getData();
-// const node = document.querySelector('.class');
+// let user = {
+//     name: 'Maksym'
+// };
 
-// setInterval(function() {
-//     if(node){
-//         node.innerHTML = someRes;
-//     }
-// }, 1000);
+// let map = new WeakMap();
+// map.set(user, 'data');
 
-// function outer() {
-//     const potentiallyHugeArray = [];
+// user = null;
 
-//     return function inner() {
-//         potentiallyHugeArray.push('Hello!');
-//         console.log('Hello!');
-//     };
-// }
+// console.log(map);
 
-// const sayHello = outer();
+let cache = new WeakMap();
 
-function createElement() {
-    const div = document.createElement('div');
-    div.id = 'test';
+function cacheUser(user) {
+    if(!cache.has(user)) {
+        cache.set(user, Date.now());
+    }
 
-    document.body.append(div);
+    return cache.get(user);
 }
 
-createElement();
+let lina = {name: 'Evelina'};
+let alex = {name: 'Alex'};
 
-function deleteElement() {
-    document.body.removeChild(document.getElementById('test'));
-}
+cacheUser(lina);
+cacheUser(alex);
 
-deleteElement();
+lina = null;
+
+console.log(cache.has(lina));
+console.log(cache.has(alex));
+
+// WeakSet
+// add, has, delete
+
+let messages = [
+    {text: 'Hello!', from: 'John'},
+    {text: 'World!', from: 'Alex'},
+    {text: '......', from: 'Maksym'},
+];
+
+let readMessages = new WeakSet();
+
+readMessages.add(messages[0]);
+readMessages.add(messages[1]);
+
+readMessages.add(messages[0]);
+
+messages.shift();
+
+console.log(readMessages.has(messages[0]));
